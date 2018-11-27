@@ -1,0 +1,25 @@
+<div class="container demos">
+    <div class="row">
+        <div class="col-3">
+            <div class="menu">
+                <p class="title">Demos</p>
+                <ul>
+                    <li><a routerLink="/demos/default-functionality" routerLinkActive="active">Default Functionality</a></li>
+                    <li><a routerLink="/demos/data-editing" routerLinkActive="active">Data Editing</a></li>
+                    <li><a routerLink="/demos/data-export" routerLinkActive="active">Data Export</a></li>
+                    <li><a routerLink="/demos/refresh-data" routerLinkActive="active">Refresh Data</a></li>
+                    <li><a routerLink="/demos/row-details" routerLinkActive="active">Row Details</a></li>
+                    <li><a routerLink="/demos/nested-grids" routerLinkActive="active">Nested Grids</a></li>
+                    <li><a routerLink="/demos/virtual-scrolling" routerLinkActive="active">Virtual Scrolling</a></li>
+                    <li><a routerLink="/demos/virtual-paging" routerLinkActive="active">Virtual Paging</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+

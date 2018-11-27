@@ -1,0 +1,78 @@
+<div class="default-functionality">
+    <h1>jQWidgets Grid Default Functionality</h1>
+    <p>
+        This demo illustrates the basic functionality of the Grid component. The jQWidgets Grid component offers rich support for interacting with data, including paging, grouping and sorting.
+    </p>
+    <jqxTabs [theme]="'material'" [width]="'100%'" >
+        <ul>
+            <li style="margin-left: 30px">Preview</li>
+            <li>Source</li>
+        </ul>
+        <div style="overflow: hidden">
+            <jqxGrid [theme]="'material'" [width]="'100%'" [source]="dataAdapter" [columns]="columns"
+                     [pageable]="true" [autoheight]="true" [sortable]="true" [filterable]="true" [altrows]="true"
+                     [editable]="true" [selectionmode]="'multiplecellsadvanced'" [columngroups]="columngroups">
+            </jqxGrid>
+        </div>
+        <div>
+            <jqxTabs [theme]="'material'" [width]="'99%'" >
+                <ul>
+                    <li style="margin-left: 30px">app.component.ts</li>
+                    <li>app.component.htm</li>
+                </ul>
+                <div>
+                    <pre><code #code>import {{ '{' }} Component } from '@angular/core';
+@Component({{ '{' }}
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
+export class AppComponent {{ '{' }}
+    source: any = {{ '{' }}
+        datatype: 'xml',
+        datafields: [
+            {{ '{' }} name: 'ProductName', type: 'string' },
+            {{ '{' }} name: 'QuantityPerUnit', type: 'int' },
+            {{ '{' }} name: 'UnitPrice', type: 'float' },
+            {{ '{' }} name: 'UnitsInStock', type: 'float' },
+            {{ '{' }} name: 'Discontinued', type: 'bool' }
+        ],
+        root: 'Products',
+        record: 'Product',
+        id: 'ProductID',
+        url: '../sampledata/products.xml'
+    };
+
+    dataAdapter: any = new jqx.dataAdapter(this.source);
+
+    cellsrenderer = (row, columnsfield, value, defaulthtml, columnproperties, rowdata) => {{ '{' }}
+        if (value &lt; 20) {{ '{' }}
+            return '&lt;span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #ff0000;">' + value + '&lt;/span>';
+        } else {{ '{' }}
+            return '&lt;span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #008000;">' + value + '&lt;/span>';
+        }
+    }
+
+    columns: any[] = [
+        {{ '{' }} text: 'Product Name', columngroup: 'ProductDetails', datafield: 'ProductName', width: 250 },
+        {{ '{' }} text: 'Quantity per Unit', columngroup: 'ProductDetails', datafield: 'QuantityPerUnit', align: 'right', cellsalign: 'right' },
+        {{ '{' }} text: 'Unit Price', columngroup: 'ProductDetails', datafield: 'UnitPrice', align: 'right', cellsalign: 'right', cellsformat: 'c2' },
+        {{ '{' }} text: 'Units In Stock', datafield: 'UnitsInStock', cellsalign: 'right', cellsrenderer: this.cellsrenderer, width: 100 },
+        {{ '{' }} text: 'Discontinued', columntype: 'checkbox', datafield: 'Discontinued', align: 'center' }
+    ];
+
+    columngroups: any[] = [
+        {{ '{' }} text: 'Product Details', align: 'center', name: 'ProductDetails' }
+    ]  
+                        </code></pre>
+                </div>
+                <div>
+                    <pre><code ref="code">&lt;jqxGrid [theme]="'material'" [width]="'100%'" [source]="dataAdapter" [columns]="columns"
+         [pageable]="true" [autoheight]="true" [sortable]="true" [filterable]="true" [altrows]="true"
+         [editable]="true" [selectionmode]="'multiplecellsadvanced'" [columngroups]="columngroups">
+&lt;/jqxGrid>
+                    </code></pre>
+                </div>
+            </jqxTabs>
+        </div>
+    </jqxTabs>
+</div>

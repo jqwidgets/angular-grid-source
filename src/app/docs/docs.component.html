@@ -1,0 +1,27 @@
+<div class="container docs">
+    <div class="row">
+        <div class="col-3">
+            <div class="menu">
+                <p class="title">Guides</p>
+                <ul>
+                    <li><a routerLink="/docs/getting-started" routerLinkActive="active">Getting Started</a></li>
+                    <li><a routerLink="/docs/fundamentals" routerLinkActive="active">Fundamentals</a></li>
+                    <li><a routerLink="/docs/data-binding" routerLinkActive="active">Data Binding</a></li>
+                    <li><a routerLink="/docs/sorting" routerLinkActive="active">Sorting</a></li>
+                    <li><a routerLink="/docs/filtering" routerLinkActive="active">Filtering</a></li>
+                    <li><a routerLink="/docs/paging" routerLinkActive="active">Paging</a></li>
+                    <li><a routerLink="/docs/grouping" routerLinkActive="active">Grouping</a></li>
+                    <li><a routerLink="/docs/editing" routerLinkActive="active">Editing</a></li>
+                </ul>
+                <ul>
+                    <li><a routerLink="/docs/api-reference" routerLinkActive="active">API Reference</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

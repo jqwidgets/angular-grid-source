@@ -1,0 +1,24 @@
+footer {
+    position: relative;
+    margin-top: -100px;
+    height: 100px;
+    width: 100%;
+    background-color: #f8f9fa;
+    clear: both;
+}
+
+.bottom-logo {
+    margin-top: 0;
+    width: 200px;
+}
+
+.rights {
+    font-size: 13px;
+    font-family: none;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+}
+
+#bottom-nav {
+    margin-bottom: 0;
+}
