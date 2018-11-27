@@ -14,7 +14,6 @@ for (var a = 0; a < pres.length; a++) {
 }
 
 function formatCode(precode) {
-    var lang = 'html';
     var textlines = precode.split(/\r|\n/);
     var linecount = 1;
     var newcode = "";
@@ -22,11 +21,6 @@ function formatCode(precode) {
     for (var b = 0; b < textlines.length; b++) {
         var code = textlines[b];
         code = code.replace(/\f|\n/g, "");
-        if (code.indexOf("if (") == -1 && code.indexOf("for (") == -1) {
-            code = code.replace(/&/g, '&amp;');
-            code = code.replace(/</g, '&lt;');
-            code = code.replace(/>/g, '&gt;');
-        }
         code = code.replace(/(".+")/g, "<span style=\"clear: both; padding: 0px; margin: 0px; color: " + fc_quot + ";\">$1</span>");
         code = code.replace(/('.+')/g, "<span style=\" clear: both; padding: 0px; margin: 0px; color: " + fc_quot + ";\">$1</span>");
         code = code.replace(/&lt;(\S.*?)&gt;/g, "<span style=\"clear: both; padding: 0px; margin: 0px; color: " + fc_html + ";\">&lt;$1&gt;</span>");
@@ -34,8 +28,8 @@ function formatCode(precode) {
         code = code.replace(/--&gt;/g, "--&gt;</span>");
 
         code = colourKeywords(keywords, code);
-        code = colourCodeKeywordsCustom("width:|disabled:|height:|uploadUrl:|datafield:|dataField:|text:|minwidth:|cellsformat:|cellsalign:|cellsformat:|columntype:", code);
-        code = colourKeywordsCustom("jqxButton|jqxRepeatButton|jqxButtonGroup|jqxRadioButton|jqxGrid|jqxTree|jqxTreeGrid|jqxInput|jqxCalendar|jqxBulletChart|jqxToggleButton|jqxLinkButton|jqxSwitchButton|jqxChart|jqxDataTable|jqxDateTimeInput|jqxCheckBox|jqxScheduler|jqxRadioButton|jqxComplexInput|jqxListBox|jqxDropDownList|jqxCombobox|jqxFileUpload|jqxEditor|jqxExpander|jqxNavBar|jqxNavigationBar|jqxTooltip|jqxToolbar|jqxScrollBar|jqxSlider|jqxRangeSelector|jqxGauge|jqxFormattedInput|jqxComplexInput|jqxNumberInput|jqxDragDrop|jqxWindow|jqxTreemap|jqxValidator|jqxTouch|jqxTextArea|jqxTagCloud|jqxTabs|jqxSplitter|jqxScrollView|jqxListView|jqxRibbon|jqxRating|jqxProgressBar|jqxPanel|jqxLayout|jqxDockingLayout|jqxNotification|jqxMenu|jqxMaskedInput|jqxLoader", code);
+        code = colourCodeKeywordsCustom("theme:|minwidth:|width:|disabled:|height:|uploadUrl:|datafield:|dataField:|text:|cellsformat:|cellsalign:|cellsformat:|columntype:|columngroup:|cellsrenderer:|align:|name:| type:|map:", code);
+        code = colourKeywordsCustom("JqxButton|JqxGrid|JqxTabs", code);
         if (code.indexOf("//") >= 0) {
             code = "<span style=\"clear: both; padding: 0px; margin: 0px; color: #a533d4;\">" + code + "</span>";
         }
@@ -45,7 +39,7 @@ function formatCode(precode) {
         linecount++;
     }
 
-    return "<pre style='border:none !important; padding: 0px !important; overflow: auto; margin-top: 5px; margin-bottom: 5px;' class='code'>" + newcode + "</pre>";
+    return newcode;
 }
 
 var colourKeywordsCustom = function (keywords, codeline) {

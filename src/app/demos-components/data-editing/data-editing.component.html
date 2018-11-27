@@ -1,3 +1,125 @@
-<p>
-  data-editing works!
-</p>
+<div class="data-editing">
+    <h1>jQWidgets Grid Data Editing</h1>
+    <p>
+        This demo illustrates editing in Angular Grid. In order to enter in edit mode, select a grid cell and start typing, Click or press the F2 key.
+        You can also navigate through the cells using the keyboard arrows or with the Tab and Shift + Tab key combinations. To cancel the cell editing,
+        press the Esc key. To save the changes press the Enter key or select another Grid cell. Pressing the 'Space' key when a checkbox cell is selected
+        will toggle the check state. You can have different editing modes including customized editors. In addition you can disable the editing for certain rows.
+        There is also an option for full row edit.
+    </p>
+    <jqxTabs [theme]="'material'" [width]="'100%'">
+        <ul>
+            <li style="margin-left: 30px">Preview</li>
+            <li>Source</li>
+        </ul>
+        <div style="overflow: hidden">
+            <jqxGrid (onCellbeginedit)="cellBeginEditEvent($event)" (onCellendedit)="cellEndEditEvent($event)"
+                     [theme]="'material'" [width]="'100%'" [source]="dataAdapter" [columns]="columns"
+                     [editable]="true" [enabletooltips]="true" [selectionmode]="'multiplecellsadvanced'">
+            </jqxGrid>
+            <div style="height: 50px; font-size: 12px; font-family: Verdana; margin-top: 30px;">
+                <div #beginEdit></div>
+                <div #endEdit style="margin-top: 10px;"></div>
+            </div>
+        </div>
+        <div>
+            <jqxTabs [theme]="'material'" [width]="'99%'">
+                <ul>
+                    <li style="margin-left: 30px">app.component.ts</li>
+                    <li>app.component.htm</li>
+                </ul>
+                <div>
+                    <pre><code class="code">import {{ '{' }} Component, ViewChild, ElementRef } from '@angular/core';
+import {{ '{' }} generatedata } from '../sampledata/generatedata';
+@Component({{ '{' }}
+    selector: 'app-root',
+    templateUrl: './app.component.html'
+})
+export class AppComponent {{ '{' }}
+    @ViewChild('beginEdit') beginEdit: ElementRef;
+    @ViewChild('endEdit') endEdit: ElementRef;
+
+    source: any = {{ '{' }}
+        localdata: generatedata(500, false),
+        datatype: 'array',
+        datafields: [
+            {{ '{' }} name: 'firstname', type: 'string' },
+            {{ '{' }} name: 'lastname', type: 'string' },
+            {{ '{' }} name: 'productname', type: 'string' },
+            {{ '{' }} name: 'available', type: 'bool' },
+            {{ '{' }} name: 'quantity', type: 'number' },
+            {{ '{' }} name: 'price', type: 'number' },
+            {{ '{' }} name: 'date', type: 'date' }
+        ]
+    };
+
+    dataAdapter: any = new jqx.dataAdapter(this.source);
+
+    columns: any[] = [
+        {{ '{' }} text: 'First Name', columntype: 'textbox', datafield: 'firstname', width: 120 },
+        {{ '{' }} text: 'Last Name', datafield: 'lastname', columntype: 'textbox', width: 120 },
+        {{ '{' }} text: 'Product', columntype: 'dropdownlist', datafield: 'productname', width: 195 },
+        {{ '{' }} text: 'Available', datafield: 'available', columntype: 'checkbox', width: 67 },
+        {{ '{' }}
+            text: 'Ship Date', datafield: 'date', columntype: 'datetimeinput', width: 110, align: 'right', cellsalign: 'right', cellsformat: 'd',
+            validation: (cell: any, value: any): any => {{ '{' }}
+                if (value == '')
+                    return true;
+                let year = value.getFullYear();
+                if (year >= 2017) {{ '{' }}
+                    return {{ '{' }} result: false, message: 'Ship Date should be before 1/1/2017' };
+                }
+                return true;
+            }
+        },
+        {{ '{' }}
+            text: 'Quantity', datafield: 'quantity', width: 70, align: 'right', cellsalign: 'right', columntype: 'numberinput',
+            validation: (cell: any, value: number): any => {{ '{' }}
+                if (value < 0 || value > 150) {{ '{' }}
+                    return {{ '{' }} result: false, message: 'Quantity should be in the 0-150 interval' };
+                }
+                return true;
+            },
+            createeditor: (row: number, cellvalue: any, editor: any): void => {{ '{' }}
+                editor.jqxNumberInput({{ '{' }} decimalDigits: 0, digits: 3 });
+            }
+        },
+        {{ '{' }}
+            text: 'Price', datafield: 'price', align: 'right', cellsalign: 'right', cellsformat: 'c2', columntype: 'numberinput',
+            validation: (cell: any, value: number): any => {{ '{' }}
+                if (value < 0 || value > 15) {{ '{' }}
+                    return {{ '{' }} result: false, message: 'Price should be in the 0-15 interval' };
+                }
+                return true;
+            },
+            createeditor: (row: number, cellvalue: any, editor: any): void => {{ '{' }}
+                editor.jqxNumberInput({{ '{' }} digits: 3 });
+            }
+        }
+    ];
+    cellBeginEditEvent(event: any): void {{ '{' }}
+        let args = event.args;
+        this.beginEdit.nativeElement.innerHTML = 'Event Type: cellbeginedit, Column: ' + args.datafield + ', Row: ' + (1 + args.rowindex) + ', Value: ' + args.value;
+    }
+    cellEndEditEvent(event: any): void {{ '{' }}
+        let args = event.args;
+        this.endEdit.nativeElement.innerHTML = 'Event Type: cellendedit, Column: ' + args.datafield + ', Row: ' + (1 + args.rowindex) + ', Value: ' + args.value;
+    }
+}
+                        </code></pre>
+                </div>
+                <div>
+                    <pre><code class="code">&lt;jqxGrid (onCellbeginedit)="cellBeginEditEvent($event)" (onCellendedit)="cellEndEditEvent($event)"
+         [theme]="'material'" [width]="'100%'" [source]="dataAdapter" [columns]="columns"
+         [editable]="true" [enabletooltips]="true" [selectionmode]="'multiplecellsadvanced'">
+&lt;/jqxGrid>
+&lt;div style="height: 50px; font-size: 12px; font-family: Verdana; margin-top: 30px;">
+    &lt;div #beginEdit>&lt;/div>
+    &lt;div #endEdit style="margin-top: 10px;">&lt;/div>
+&lt;/div>
+                    </code></pre>
+                </div>
+            </jqxTabs>
+        </div>
+    </jqxTabs>
+</div>

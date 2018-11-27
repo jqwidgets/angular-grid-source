@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+declare var formatCode;
 
 @Component({
     selector: 'app-default-functionality',
@@ -9,6 +10,12 @@ import { Component, AfterViewInit } from '@angular/core';
 export class DefaultFunctionalityComponent implements AfterViewInit {
 
     ngAfterViewInit() {
+        let codeSpans = document.getElementsByClassName('code');
+
+        for (let i = 0; i < codeSpans.length; i++) {
+            codeSpans[i].innerHTML = formatCode(codeSpans[i].innerHTML);
+        }
+
         let buttons = document.getElementsByClassName('jqx-button');
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].removeAttribute('type');
