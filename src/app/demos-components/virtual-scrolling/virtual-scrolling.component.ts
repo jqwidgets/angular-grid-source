@@ -1,15 +1,72 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
+declare var formatCode;
 @Component({
-  selector: 'app-virtual-scrolling',
-  templateUrl: './virtual-scrolling.component.html',
-  styleUrls: ['./virtual-scrolling.component.css']
+    selector: 'app-virtual-scrolling',
+    templateUrl: './virtual-scrolling.component.html',
+    styleUrls: ['./virtual-scrolling.component.css']
 })
-export class VirtualScrollingComponent implements OnInit {
+export class VirtualScrollingComponent implements AfterViewInit {
 
-  constructor() { }
+    ngAfterViewInit() {
+        let codeSpans = document.getElementsByClassName('code');
 
-  ngOnInit() {
-  }
+        for (let i = 0; i < codeSpans.length; i++) {
+            codeSpans[i].innerHTML = formatCode(codeSpans[i].innerHTML);
+        }
+    }
 
+    source: any = {
+        datatype: 'array',
+        localdata: {},
+        totalrecords: 1000000
+    }
+
+    dataAdapter: any = new jqx.dataAdapter(this.source);
+
+    rendergridrows = (params: any): any[] => {
+        let data = this.generateData(params.startindex, params.endindex);
+        return data;
+    }
+
+    columns: any[] = [
+        { text: 'Id', datafield: 'id', width: 100 },
+        { text: 'First Name', datafield: 'firstname', width: 120 },
+        { text: 'Last Name', datafield: 'lastname', width: 120 },
+        { text: 'Product', datafield: 'productname', width: 180 },
+        { text: 'Quantity', datafield: 'quantity', width: 80, cellsalign: 'right' },
+        { text: 'Unit Price', datafield: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
+        { text: 'Total', datafield: 'total', cellsalign: 'right', cellsformat: 'c2' }
+    ];
+
+    firstNames: string[] = [
+        'Andrew', 'Nancy', 'Shelley', 'Regina', 'Yoshi', 'Antoni', 'Mayumi', 'Ian', 'Peter', 'Lars', 'Petra', 'Martin', 'Sven', 'Elio', 'Beate', 'Cheryl', 'Michael', 'Guylene'
+    ];
+    lastNames: string[] = [
+        'Fuller', 'Davolio', 'Burke', 'Murphy', 'Nagase', 'Saavedra', 'Ohno', 'Devling', 'Wilson', 'Peterson', 'Winkler', 'Bein', 'Petersen', 'Rossi', 'Vileid', 'Saylor', 'Bjorn', 'Nodier'
+    ];
+    productNames: string[] = [
+        'Black Tea', 'Green Tea', 'Caffe Espresso', 'Doubleshot Espresso', 'Caffe Latte', 'White Chocolate Mocha', 'Cramel Latte', 'Caffe Americano', 'Cappuccino', 'Espresso Truffle', 'Espresso con Panna', 'Peppermint Mocha Twist'
+    ];
+    priceValues: string[] = [
+        '2.25', '1.5', '3.0', '3.3', '4.5', '3.6', '3.8', '2.5', '5.0', '1.75', '3.25', '4.0'
+    ];
+
+    generateData(startindex: number, endindex: number): any {
+        let data = {};
+        for (let i = startindex; i < endindex; i++) {
+            let row = {};
+            let productindex = Math.floor(Math.random() * this.productNames.length);
+            let price = parseFloat(this.priceValues[productindex]);
+            let quantity = 1 + Math.round(Math.random() * 10);
+            row['id'] = i;
+            row['firstname'] = this.firstNames[Math.floor(Math.random() * this.firstNames.length)];
+            row['lastname'] = this.lastNames[Math.floor(Math.random() * this.lastNames.length)];
+            row['productname'] = this.productNames[productindex];
+            row['price'] = price;
+            row['quantity'] = quantity;
+            row['total'] = price * quantity;
+            data[i] = row;
+        }
+        return data;
+    }
 }
