@@ -1,123 +1,128 @@
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
-<p>
-    home works!
-</p>
+<div class="home">
+    <div class="image">
+        <h2>jQWidgets Angular Grid</h2>
+        <button routerLink="/demos" class="demos-button">
+            Demos
+        </button>
+        <button routerLink="/docs" class="docs-button">
+            Docs
+        </button>
+    </div>
+    <div class="grid-demo">
+        <jqxGrid [theme]="'material'" [width]="'70%'" [source]="dataAdapter" [columns]="columns"
+                 [pageable]="true" [autoheight]="true" [sortable]="true" [filterable]="true"
+                 [altrows]="true" [enabletooltips]="true" [editable]="true"
+                 [selectionmode]="'multiplecellsadvanced'" [columngroups]="columngroups">
+        </jqxGrid>
+    </div>
+    <div class="section right">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3>Outlook-Style Data Grouping</h3>
+                    <p>
+                        Our Data Grid widget enables users to group data with simple drag and drop.
+                        Users can also rearrange the grouping hierarchy by dragging and dropping the grouping headers in the group panel.
+                    </p>
+                </div>
+                <div class="col-8">
+                    <img src="../../assets/grid-grouping.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section left">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <img src="../../assets/grid-nested.png" />
+                </div>
+                <div class="col-4">
+                    <h3>Nested Data Grids</h3>
+                    <p>
+                        jqxGrid has a very flexible layout that enables easy nesting of any content, UI elements and widgets including nested data grids.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section right">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3>Row Details</h3>
+                    <p>
+                        Row details are built-in feature of the Angular data grid. You can change the height of the row details area and use custom data templates.
+                        You can also use jqxGrid APIs to expand and collapse the grid row details area.
+                    </p>
+                </div>
+                <div class="col-8">
+                    <img src="../../assets/grid-row-details.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section left">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <img src="../../assets/grid-columns.png" />
+                </div>
+                <div class="col-4">
+                    <h3>Column Types</h3>
+                    <p>
+                        The infrastructure of the Angular Grid is designed to support multiple column types. The data grid provides built-in 'Text', 'Number', 'DropDownList', 'DateTime' and 'CheckBox' columns.
+                        Our Angular grid also supports custom data rendering. Developers can easily replace the default rendering logic and use custom columns and cells rendering.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section right">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3>Pinned Columns</h3>
+                    <p>
+                        jqxGrid supports Excel-like pinned (frozen) columns. This feature also allows you to pin columns to the left the gridview's canvas.
+                        The pinned columns are very useful when working with large tables and it makes it easy to scroll and compare data from different parts of the table.
+                    </p>
+                </div>
+                <div class="col-8">
+                    <img src="../../assets/grid-pinned.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section left">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <img src="../../assets/grid-formatting.png" />
+                </div>
+                <div class="col-4">
+                    <h3>Cells Formatting</h3>
+                    <p>
+                        Our Angular grid offers a cell formatting feature where you can easily specify a formatting string for grid column.
+                        You can format dates, numeric values like decimal numbers, integer and floating-point numbers, currency and percentage values.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section right">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3>Localization</h3>
+                    <p>
+                        Our Angular grid supports localization for multi-language web sites and applications. All text elements used in control buttons, menu items and elements can be localized.
+                    </p>
+                </div>
+                <div class="col-8">
+                    <img src="../../assets/grid-localization.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

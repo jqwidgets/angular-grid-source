@@ -1,0 +1,59 @@
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #34475F;
+    padding-top: 20px;
+}
+
+.grid-demo {
+    margin-top: 30px;
+}
+
+.image {
+    width: 100%;
+    height: 440px;
+    background: url(../../assets/background.png) no-repeat bottom center;
+    background-size: cover;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: left;
+}
+
+.section {
+    margin-top: 80px;
+}
+
+img {
+    width: 100%;
+}
+
+.right {
+    background-color: #f8f9fa;
+}
+
+button {
+    margin-top: 270px;
+    background-color: #DD0031;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 100px;
+    height: 40px;
+}
+
+    button:hover {
+        background-color: #f8f9fa;
+        color: #DD0031;
+        border: 2px solid #DD0031;
+    }
+
+.demos-button {
+    margin-right: 305px;
+}
