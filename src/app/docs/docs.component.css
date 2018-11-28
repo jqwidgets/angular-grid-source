@@ -1,3 +1,8 @@
 .docs {
     margin-top: 50px;
 }
+
+.keyword {
+    color: #53B9E6;
+    font-weight: 700;
+}
