@@ -72,3 +72,8 @@ a.active {
     a.active:hover {
         color: #53B9E6 !important;
     }
+
+.keyword {
+    color: #53B9E6;
+    font-weight: 700;
+}
