@@ -1,8 +1,17 @@
 .docs {
     margin-top: 50px;
+    padding-bottom: 20px;
 }
 
 .keyword {
     color: #53B9E6;
     font-weight: 700;
+}
+
+.preCode {
+    font-size: 14px;
+    padding: 0.5em;
+    margin-top: 0;
+    background-color: #f9f9f9;
+    border-radius: 5px;
 }

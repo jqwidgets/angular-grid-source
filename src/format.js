@@ -5,7 +5,7 @@ var fc_quot = "#080";
 var fc_kwds = "#11a";
 
 //Language keywords
-var fc_java_kwds = "public|int|float|double|private|new|void|synchronized|if|for|byte|break|else";
+var fc_java_kwds = "public|let|int|float|double|private|new|void|synchronized|if|for|byte|break|else";
 
 var pres = document.getElementsByTagName("pre");
 for (var a = 0; a < pres.length; a++) {
@@ -17,7 +17,7 @@ function formatCode(precode) {
     var textlines = precode.split(/\r|\n/);
     var linecount = 1;
     var newcode = "";
-    var keywords = "debugger|export|function|return|null|for|set|undefined|var|with|true|false|switch|this|case";
+    var keywords = "debugger|export|function|return|null|for|set|undefined|var|let|with|true|false|switch|this|case";
     for (var b = 0; b < textlines.length; b++) {
         var code = textlines[b];
         code = code.replace(/\f|\n/g, "");
