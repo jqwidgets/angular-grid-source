@@ -30,7 +30,7 @@ export class HomeComponent implements AfterViewInit {
         root: 'Products',
         record: 'Product',
         id: 'ProductID',
-        url: '../../assets/sampledata/products.xml'
+        url: './assets/sampledata/products.xml'
     };
 
     dataAdapter: any = new jqx.dataAdapter(this.source);

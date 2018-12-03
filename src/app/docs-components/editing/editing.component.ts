@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { generatedata } from '../../../assets/sampledata/generatedata';
+import { generatedata } from './../../../assets/sampledata/generatedata';
 declare var formatCode;
 
 @Component({

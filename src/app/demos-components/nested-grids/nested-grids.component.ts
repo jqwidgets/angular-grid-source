@@ -30,7 +30,7 @@ export class NestedGridsComponent implements AfterViewInit {
         record: 'Employee',
         id: 'EmployeeID',
         datatype: 'xml',
-        url: '../../../assets/sampledata/employees.xml'
+        url: './assets/sampledata/employees.xml'
     };
 
     employeesAdapter: any = new jqx.dataAdapter(this.source);
@@ -47,14 +47,14 @@ export class NestedGridsComponent implements AfterViewInit {
         root: 'Orders',
         record: 'Order',
         datatype: 'xml',
-        url: '../../../assets/sampledata/orderdetails.xml'
+        url: './assets/sampledata/orderdetails.xml'
     };
 
     ordersDataAdapter = new jqx.dataAdapter(this.ordersSource, { autoBind: true });
 
     photoRenderer = (row: number, column: any, value: string): string => {
         let name = this.myGrid.getrowdata(row).FirstName;
-        let imgurl = '../../../assets/' + name.toLowerCase() + '.png';
+        let imgurl = './assets/' + name.toLowerCase() + '.png';
         let img = '<div style="background: white;"><img style="margin: 2px; margin-left: 10px;" width="32" height="32" src="' + imgurl + '"></div>';
         return img;
     }

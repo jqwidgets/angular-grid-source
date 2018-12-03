@@ -66,7 +66,7 @@ export class RowDetailsComponent implements AfterViewInit {
             let img = document.createElement('img');
             img.height = 60;
             img.style.marginLeft = '10px';
-            img.src = '../../../assets/' + datarecord.firstname.toLowerCase() + '.png';
+            img.src = './assets/' + datarecord.firstname.toLowerCase() + '.png';
             image.appendChild(photo);
             image.appendChild(img);
             photocolumn.appendChild(image);

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
-import { generatedata } from '../../../assets/sampledata/generatedata';
+import { generatedata } from './../../../assets/sampledata/generatedata';
 declare var formatCode;
 
 @Component({
@@ -82,7 +82,7 @@ export class SortingComponent implements AfterViewInit {
         root: "entry",
         record: "content",
         id: 'OrderID',
-        url: '../../../assets/sampledata/orders.xml',
+        url: './assets/sampledata/orders.xml',
         sortcolumn: 'ShipName',
         sortdirection: 'asc'
     };

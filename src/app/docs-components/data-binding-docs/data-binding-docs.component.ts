@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
-import { generatedata } from '../../../assets/sampledata/generatedata';
+import { generatedata } from './../../../assets/sampledata/generatedata';
 declare var formatCode;
 
 @Component({
@@ -44,7 +44,7 @@ export class DataBindingDocsComponent implements AfterViewInit {
         root: 'entry',
         record: 'content',
         id: 'm\\:properties>d\\:CustomerID',
-        url: '../../../assets/sampledata/customers.xml'
+        url: './assets/sampledata/customers.xml'
     };
     jsonSource: any = {
         datatype: 'json',
@@ -56,7 +56,7 @@ export class DataBindingDocsComponent implements AfterViewInit {
             { name: 'protein', type: 'string' }
         ],
         id: 'id',
-        url: '../../../assets/sampledata/beverages.txt'
+        url: './assets/sampledata/beverages.txt'
     };
     tsvSource: any = {
         datatype: 'tab',
@@ -67,7 +67,7 @@ export class DataBindingDocsComponent implements AfterViewInit {
             { name: 'Population', type: 'float' },
             { name: 'Rate', type: 'float' }
         ],
-        url: '../../../assets/sampledata/homeprices.txt'
+        url: './assets/sampledata/homeprices.txt'
     };
     csvSource: any = {
         datatype: "csv",
@@ -76,7 +76,7 @@ export class DataBindingDocsComponent implements AfterViewInit {
             { name: 'S&P 500', type: 'float' },
             { name: 'NASDAQ', type: 'float' }
         ],
-        url: '../../../assets/sampledata/nasdaq_vs_sp500.txt'
+        url: './assets/sampledata/nasdaq_vs_sp500.txt'
     };
     refreshSource: any = {
         localdata: generatedata(50, false),

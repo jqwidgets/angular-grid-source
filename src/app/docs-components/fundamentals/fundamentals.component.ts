@@ -34,7 +34,7 @@ export class FundamentalsComponent implements AfterViewInit {
                 { name: 'protein', type: 'string' }
             ],
             id: 'id',
-            url: '../../../assets/sampledata/beverages.txt'
+            url: './assets/sampledata/beverages.txt'
         };
     dataAdapter: any = new jqx.dataAdapter(this.source);
 

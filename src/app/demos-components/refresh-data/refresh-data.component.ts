@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
-import { generatedata } from '../../../assets/sampledata/generatedata';
+import { generatedata } from './../../../assets/sampledata/generatedata';
 declare var formatCode;
 
 @Component({
