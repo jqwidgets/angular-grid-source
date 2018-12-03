@@ -45,10 +45,10 @@ export class HomeComponent implements AfterViewInit {
     };
 
     columns: any[] = [
-        { text: 'Product Name', columngroup: 'ProductDetails', datafield: 'ProductName', width: 248 },
+        { text: 'Product Name', columngroup: 'ProductDetails', datafield: 'ProductName' },
         { text: 'Quantity per Unit', columngroup: 'ProductDetails', datafield: 'QuantityPerUnit', cellsalign: 'right', align: 'right' },
         { text: 'Unit Price', columngroup: 'ProductDetails', datafield: 'UnitPrice', align: 'right', cellsalign: 'right', cellsformat: 'c2' },
-        { text: 'Units In Stock', datafield: 'UnitsInStock', cellsalign: 'right', cellsrenderer: this.cellsrenderer, width: 100 },
+        { text: 'Units In Stock', datafield: 'UnitsInStock', cellsalign: 'right', cellsrenderer: this.cellsrenderer },
         { text: 'Discontinued', columntype: 'checkbox', datafield: 'Discontinued', align: 'center' }
     ];
 
