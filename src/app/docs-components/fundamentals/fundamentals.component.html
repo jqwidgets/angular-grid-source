@@ -1,147 +1,128 @@
 <div class="fundamentals">
-  <h1>Angular Grid - Fundamentals</h1>
-  <h3>Configuration</h3>
-  <p>
-    After you have created your <span class="keyword">Angular</span> project, here is how you should structure it:<br />
-    The Grid component for Angular requires the following settings:
-  </p>
-  <p>
-    Firstly we will start with the base thing - to include the used component into the <span class="keyword">app.module.ts</span>
-    like this:
-  </p>
-  <pre class="preCode"><code class="code">{{importJqxGridComponent}}</code></pre>
+    <h1>Angular Grid - Fundamentals</h1>
+    <h3>Configuration</h3>
+    <p>
+        After you have created your <span class="keyword">Angular</span> project, here is how you should structure it:<br />
+        The Grid component for Angular requires the following settings:
+    </p>
+    <p>
+        Firstly we will start with the base thing - to include the used component into the <span class="keyword">app.module.ts</span>
+        like this:
+    </p>
+    <pre class="preCode"><code class="code">{{importJqxGridComponent}}</code></pre>
+    <p>and add it to the <span class="keyword">declarations</span> array of the <span class="keyword">@NgModule</span>.</p>
 
-  <h3>Template</h3>
-  <p>
-    The <strong>app.component.html</strong> file contain specific configuration for our component.
-    There we will set the tags for the new component - <span class="keyword">&lt;jqxGrid /></span>:
-  </p>
-  <pre class="preCode">
-<code class="code">  &lt;jqxGrid #myGrid
-    [theme]="'material'"
-    [width]="'100%'" 
-    [source]="dataAdapter" 
-    [columns]="columns" 
-    [filterable]="true">
-  &lt;/jqxGrid>
+    <h3>Template</h3>
+    <p>
+        The <strong>app.component.html</strong> file contain specific configuration for our component.
+        There we will set the tags for the new component - <span class="keyword">&lt;jqxGrid /></span>:
+    </p>
+    <pre class="preCode">
+<code class="code">&lt;jqxGrid #myGrid
+       [theme]="'material'" [width]="'100%'" [source]="dataAdapter"
+       [columns]="columns" [filterable]="true">
+ &lt;/jqxGrid>
 </code></pre>
 
-  <h3>Properties</h3>
-  <p>
-    The properties for our component are defined in our Angular class in <strong>app.component.html</strong> file.
-  </p>
-  <pre class="preCode">
-  <code class="code">source: any =
-  {{ '{' }}
-      datatype: 'json',
-      datafields: [
-          {{ '{' }} name: 'name', type: 'string' },
-          {{ '{' }} name: 'type', type: 'string' },
-          {{ '{' }} name: 'calories', type: 'int' },
-          {{ '{' }} name: 'totalfat', type: 'string' },
-          {{ '{' }} name: 'protein', type: 'string' }
-      ],
-      id: 'id',
-      url: '../sampledata/beverages.txt'
-  };
-
-  dataAdapter: any = new jqx.dataAdapter(this.source);
-
-  columns: any[] =
-  [
-      {{ '{' }} text: 'Name', datafield: 'name', width: 250 },
-      {{ '{' }} text: 'Beverage Type', datafield: 'type', width: 250 },
-      {{ '{' }} text: 'Calories', datafield: 'calories', width: 180 },
-      {{ '{' }} text: 'Total Fat', datafield: 'totalfat', width: 120 },
-      {{ '{' }} text: 'Protein', datafield: 'protein', minwidth: 120 }
-  ];
+    <h3>Properties</h3>
+    <p>
+        The properties for our component are defined in our class in the <strong>app.component.ts</strong> file.
+    </p>
+    <pre class="preCode"><code class="code">source: any = {{ '{' }}
+    datatype: 'json',
+    datafields: [
+        {{ '{' }} name: 'name', type: 'string' },
+        {{ '{' }} name: 'type', type: 'string' },
+        {{ '{' }} name: 'calories', type: 'int' },
+        {{ '{' }} name: 'totalfat', type: 'string' },
+        {{ '{' }} name: 'protein', type: 'string' }
+    ],
+    id: 'id',
+    url: '../sampledata/beverages.txt'
+};
+         
+dataAdapter: any = new jqx.dataAdapter(this.source);
+ 
+columns: any[] = [
+    {{ '{' }} text: 'Name', datafield: 'name', width: 250 },
+    {{ '{' }} text: 'Beverage Type', datafield: 'type', width: 250 },
+    {{ '{' }} text: 'Calories', datafield: 'calories', width: 180 },
+    {{ '{' }} text: 'Total Fat', datafield: 'totalfat', width: 120 },
+    {{ '{' }} text: 'Protein', datafield: 'protein', minwidth: 120 }
+];
 </code></pre>
 
-  <h3>Events</h3>
-  <p>
-    The events in Angular are set as an attribute with <span class="keyword">on</span> prefix, for example in the
-    <strong>template</strong>:
-  </p>
-  <pre class="preCode">
-<code class="code">  &lt;jqxGrid #myGrid
-    (onFilter)="onFilter()"
-    [theme]="'material'"
-    [width]="'100%'" 
-    [source]="dataAdapter" 
-    [columns]="columns" 
-    [filterable]="true">
-  &lt;/jqxGrid>
-</code></pre>
+    <h3>Events</h3>
+    <p>
+        The events in Angular are set as an attribute with <span class="keyword">on</span> prefix in the component tag, for example:
+    </p>
+    <pre class="preCode"><code class="code">&lt;jqxGrid #myGrid (onFilter)="onFilter()"
+    [theme]="'material'" [width]="'100%'" [source]="dataAdapter" 
+    [columns]="columns" [filterable]="true">
+&lt;/jqxGrid></code></pre>
 
-  <p>
-    After that we add the logic that we want to happens when the event is fired.
-    This is implemented in <strong>app.component.ts</strong> file:
-  </p>
-  <pre class="preCode">
-  <code class="code">onFilter(): void
-  {{ '{' }}
+    <p>
+        After that we add the logic that we want to execute when the event is fired.
+        This is implemented in <strong>app.component.ts</strong> file:
+    </p>
+    <pre class="preCode"><code class="code">onFilter(event: any): void {{ '{' }}
     //Do something
-  }
-</code></pre>
-
-  <h3 id="methods">Methods</h3>
-  <p>
-    To use a component's method we should have its reference. In Angular we refer to a component by the instance of the component.
-    We need to include <span class="keyword">ViewChild</span> directive to our class in <strong>app.component.ts</strong>:
-  </p>
-  <pre class="preCode"><code class="code">import {{ '{' }} Component, ViewChild } from '@angular/core';</code></pre>
-
-  <p>
-    In the next step we need to include <span class="keyword">jqxGridComponent</span> type
-    for <strong>jqxGrid</strong> in this case:
-  </p>
-  <pre class="preCode"><code class="code">{{importJqxGridComponent}}</code></pre>
-
-  <p>
-    Afterword, we will create variable that will contain the instance of the <strong>jqxGrid</strong>.
-  </p>
-  <pre class="preCode"><code class="code">@ViewChild('myGrid') myGrid: jqxGridComponent;</code></pre>
-  
-  <p>
-    Here how you can use a component's method:
-  </p>
-  <pre class="preCode"><code class="code">let filtersinfo = this.myGrid.getfilterinformation();</code></pre>
-
-<pre class="preCode">
-<code class="code">onFilter(): void
-{{ '{' }}
-  let filtersinfo = this.myGrid.getfilterinformation();
-  console.log(filtersinfo);
 }
 </code></pre>
 
-<p>
-  If you have followed the above steps, this is what the result would be:
-</p>
+    <h3 id="methods">Methods</h3>
+    <p>
+        To use a component's method we should have its reference. In Angular we refer to a component by the instance of the component.
+        We need to include <span class="keyword">ViewChild</span> directive to our class in <strong>app.component.ts</strong>:
+    </p>
+    <pre class="preCode"><code class="code">import {{ '{' }} Component, ViewChild } from '@angular/core';</code></pre>
 
-<jqxTabs [theme]="'material'" [width]="'100%'">
-  <ul>
-    <li style="margin-left: 30px">Preview</li>
-    <li>Source</li>
-  </ul>
-  <div style="overflow: hidden">
-    <jqxGrid #myGrid
-      (onFilter)="onFilter()"
-      [theme]="'material'"
-      [width]="'100%'"
-      [source]="dataAdapter"
-      [columns]="columns"
-      [filterable]="true">
-    </jqxGrid>
-  </div>
-  <div>
-    <jqxTabs [theme]="'material'" [width]="'99%'">
-      <ul>
-        <li>app.component.ts</li>
-        <li>app.component.html</li>
-      </ul>
-      <div>
-        <pre><code class="code">import {{ '{' }} Component } from '@angular/core';
+    <p>
+        In the next step we need to include <span class="keyword">jqxGridComponent</span> type
+        for <strong>jqxGrid</strong> in this case:
+    </p>
+    <pre class="preCode"><code class="code">{{importJqxGridComponent}}</code></pre>
+
+    <p>
+        Afterwords, we will create variable that will contain the instance of the <strong>jqxGrid</strong>.
+    </p>
+    <pre class="preCode"><code class="code">@ViewChild('myGrid') myGrid: jqxGridComponent;</code></pre>
+
+    <p>
+        Here is how you can use a component's method:
+    </p>
+    <pre class="preCode"><code class="code">let filtersinfo = this.myGrid.getfilterinformation();</code></pre>
+
+<pre class="preCode"><code class="code">onFilter(event: any): void {{ '{' }}
+    let filtersinfo = this.myGrid.getfilterinformation();
+    console.log(filtersinfo);
+}
+</code></pre>
+
+    <p>
+        If you have followed the above steps, this is what the result would be:
+    </p>
+
+    <jqxTabs [theme]="'material'" [width]="'100%'">
+        <ul>
+            <li style="margin-left: 30px">Preview</li>
+            <li>Source</li>
+        </ul>
+        <div style="overflow: hidden">
+            <jqxGrid #myGrid (onFilter)="onFilter()"
+                     [theme]="'material'" [width]="'100%'" [source]="dataAdapter"
+                     [columns]="columns" [filterable]="true">
+            </jqxGrid>
+        </div>
+        <div>
+            <jqxTabs [theme]="'material'" [width]="'99%'">
+                <ul>
+                    <li style="margin-left: 30px">app.component.ts</li>
+                    <li>app.component.html</li>
+                </ul>
+                <div>
+                    <pre><code class="code">import {{ '{' }} Component, ViewChild } from '@angular/core';
+import {{ '{' }} jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
   
 @Component({{ '{' }}
     selector: 'app-root',
@@ -149,6 +130,8 @@
 })
  
 export class AppComponent {{ '{' }}
+    @ViewChild('myGrid') myGrid: jqxGridComponent;
+ 
     source: any =
     {{ '{' }}
         datatype: 'json',
@@ -178,19 +161,15 @@ export class AppComponent {{ '{' }}
       let filtersinfo = this.myGrid.getfilterinformation();
       console.log(filtersinfo);
     }
-}
-                        </code></pre>
-      </div>
-      <div>
-        <pre><code class="code">&lt;jqxGrid #myGrid
-  (onFilter)="onFilter()"
-  [theme]="'material'"
-  [width]="'100%'" 
-  [source]="dataAdapter" 
-  [columns]="columns" 
-  [filterable]="true">
+} </code></pre>
+                </div>
+                <div>
+                    <pre><code class="code">&lt;jqxGrid #myGrid (onFilter)="onFilter()"
+    [theme]="'material'" [width]="'100%'" [source]="dataAdapter" 
+    [columns]="columns" [filterable]="true">
 &lt;/jqxGrid></code></pre>
-      </div>
+                </div>
+            </jqxTabs>
+        </div>
     </jqxTabs>
-  </div>
-</jqxTabs>
+</div>

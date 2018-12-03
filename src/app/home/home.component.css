@@ -28,7 +28,7 @@ p {
     margin-top: 80px;
 }
 
-img {
+.col-8 img {
     width: 100%;
 }
 
@@ -36,7 +36,7 @@ img {
     background-color: #f8f9fa;
 }
 
-button {
+.image button {
     margin-top: 270px;
     background-color: #DD0031;
     color: white;
@@ -48,7 +48,7 @@ button {
     height: 40px;
 }
 
-    button:hover {
+    .image button:hover {
         background-color: #f8f9fa;
         color: #DD0031;
         border: 2px solid #DD0031;
@@ -56,4 +56,30 @@ button {
 
 .demos-button {
     margin-right: 305px;
+}
+
+@media screen and (max-width: 1100px) {
+    .jqx-grid {
+        width: 80% !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .jqx-grid {
+        width: 90% !important;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .col-4 {
+        flex: none;
+        max-width: none;
+    }
+
+    .col-8 {
+        flex: none;
+        display: initial;
+        max-width: none;
+        width: 100%;
+    }
 }

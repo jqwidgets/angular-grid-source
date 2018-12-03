@@ -43,6 +43,8 @@ body {
     font-size: 20px;
     font-weight: 700;
     text-align: left;
+    margin-top: 0px !important;
+    margin-bottom: 1rem;
 }
 
 .content {
@@ -72,8 +74,3 @@ a.active {
     a.active:hover {
         color: #53B9E6 !important;
     }
-
-.keyword {
-    color: #53B9E6;
-    font-weight: 700;
-}

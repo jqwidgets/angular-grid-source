@@ -17,7 +17,7 @@ function formatCode(precode) {
     var textlines = precode.split(/\r|\n/);
     var linecount = 1;
     var newcode = "";
-    var keywords = "debugger|export|function|return|null|for|set|undefined|var|let|with|true|false|switch|this|case";
+    var keywords = "debugger|export|import|function|return|null|for|set|undefined|var|let|with|true|false|switch|this|case";
     for (var b = 0; b < textlines.length; b++) {
         var code = textlines[b];
         code = code.replace(/\f|\n/g, "");
